@@ -76,3 +76,7 @@ L'application est accessible sur `http://127.0.0.1:8000`.
 - Gestion des catégories, produits et acheteurs (CRUD), avec restrictions selon le rôle
 - Enregistrement d'achats depuis la fiche d'un acheteur
 - API REST documentée avec Swagger
+
+## Présentation complète du projet
+
+📄 [NIASS_NDIAYE_boutique.pdf](./NIASS_NDIAYE_boutique.pdf) — présentation des vues, de la documentation Swagger, des vues par rôle et des liens du projet.
