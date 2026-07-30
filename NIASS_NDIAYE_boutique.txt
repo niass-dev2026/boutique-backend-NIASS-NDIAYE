@@ -1,0 +1,138 @@
+==========================================================
+EXAMEN CCP 2026 — GESTION DE BOUTIQUE
+==========================================================
+
+Noms des deux membres du binôme :
+- Aïssatou Niass
+- Birame Ndiaye
+
+Liens GitHub :
+- Backend  : https://github.com/niass-dev2026/boutique-backend-NIASS-NDIAYE
+- Frontend : https://github.com/niass-dev2026/boutique-frontend-NIASS-NDIAYE
+
+==========================================================
+1. PRESENTATION DES VUES DU FRONTEND (React)
+==========================================================
+
+Le frontend est une application React (Vite) entierement separee du
+backend, hebergee dans son propre depot GitHub. Elle consomme l'API
+REST Laravel via la bibliotheque axios, et la navigation entre les
+pages est geree par react-router-dom, sans rechargement de page.
+
+- Accueil (/)
+  Page de bienvenue presentant l'application.
+
+- Liste des produits (/produits)
+  Tableau affichant tous les produits avec leur nom, prix, stock et
+  categorie associee. Chaque ligne propose un lien "Voir" vers le
+  detail du produit.
+
+- Detail d'un produit (/produits/:id)
+  Affiche le nom, le prix, le stock, la categorie et la description
+  complete du produit selectionne, avec un lien de retour vers la
+  liste.
+
+- Liste des categories (/categories)
+  Affiche toutes les categories disponibles, avec leur description
+  et le nombre de produits qui leur sont rattaches.
+
+Une barre de navigation commune, presente sur toutes les pages,
+permet de circuler librement entre Accueil, Produits et Categories.
+L'interface reste lisible aussi bien sur ordinateur que sur mobile.
+
+==========================================================
+2. PRESENTATION DE LA DOCUMENTATION SWAGGER (Backend)
+==========================================================
+
+La documentation de l'API est generee automatiquement avec le
+package darkaonline/l5-swagger, a partir d'annotations PHP
+(attributs #[OA\...]) placees directement dans les controleurs API.
+
+Elle est accessible a l'adresse suivante, une fois le serveur
+Laravel demarre :
+http://127.0.0.1:8000/api/documentation
+
+Organisation de la documentation :
+
+Les endpoints sont regroupes en trois categories (tags), chacune
+correspondant a une entite du modele de donnees :
+
+- Categories
+  GET/POST /categories
+  GET/PUT/DELETE /categories/{id}
+  -> Gestion complete des categories
+
+- Produits
+  GET/POST /produits
+  GET/PUT/DELETE /produits/{id}
+  -> Gestion complete des produits
+
+- Acheteurs
+  GET/POST /acheteurs
+  GET/PUT/DELETE /acheteurs/{id}
+  POST /acheteurs/{id}/acheter
+  -> Gestion des acheteurs et enregistrement des achats
+
+Contenu de chaque annotation :
+- Un resume de l'action realisee par l'endpoint
+- Les parametres attendus (par exemple l'identifiant dans l'URL)
+- Le corps de requete attendu pour les methodes POST/PUT, avec des
+  exemples concrets
+- Les codes de reponse possibles : 200 (succes), 201 (cree),
+  204 (supprime), 404 (non trouve), 422 (erreur de validation)
+
+L'interface Swagger UI permet egalement de tester chaque endpoint
+en conditions reelles grace au bouton "Essaie-le" (Try it out), sans
+avoir besoin d'un outil externe comme Postman : la requete, la
+reponse du serveur et les en-tetes HTTP s'affichent directement dans
+le navigateur.
+
+==========================================================
+3. VUES CORRESPONDANT AUX DIFFERENTS ROLES
+==========================================================
+
+L'application distingue trois roles utilisateurs : employe,
+gestionnaire et admin. Ces restrictions s'appliquent a la fois sur
+les routes (via le middleware personnalise CheckRole) et sur
+l'affichage des vues Blade (les boutons d'action apparaissent ou
+disparaissent selon le role de la personne connectee).
+
+- Employe
+  Consulter les categories, produits et acheteurs (lecture seule).
+  Enregistrer un nouvel achat depuis la fiche d'un acheteur.
+
+- Gestionnaire
+  Tout ce que peut faire un employe, plus la creation, la
+  modification et la suppression des categories, produits et
+  acheteurs.
+
+- Admin
+  Tout ce que peut faire un gestionnaire, plus la gestion des
+  utilisateurs et de leurs roles.
+
+Toute tentative d'acces direct a une URL non autorisee pour le role
+connecte renvoie une erreur 403 (Acces non autorise), aussi bien
+cote navigation Blade que cote API.
+
+==========================================================
+4. LIENS GITHUB DES DEPOTS
+==========================================================
+
+Depot backend (Laravel) :
+https://github.com/niass-dev2026/boutique-backend-NIASS-NDIAYE
+
+Depot frontend (React) :
+https://github.com/niass-dev2026/boutique-frontend-NIASS-NDIAYE
+
+Chaque depot contient un fichier README.md detaillant la procedure
+d'installation, les comptes de test et les URL utiles. Les deux
+membres du binome sont collaborateurs sur les deux depots.
+
+==========================================================
+5. NOMS DES DEUX MEMBRES DU BINOME
+==========================================================
+
+- Aïssatou Niass
+- Birame Ndiaye
+
+==========================================================
